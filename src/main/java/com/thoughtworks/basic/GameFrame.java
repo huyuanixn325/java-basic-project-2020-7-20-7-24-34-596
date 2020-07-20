@@ -10,7 +10,11 @@ public class GameFrame {
     }
 
     public void roll(int i) {
-        rolls.add(i);
+        if (isEnd()){
+            if (getScore()==10){
+                rolls.add(0);
+            }else rolls.add(i);
+        }
     }
 
     public int getScore() {
@@ -19,5 +23,11 @@ public class GameFrame {
            score=score+rolls.get(i);
        }
        return score;
+    }
+
+    public boolean isEnd(){
+        if (rolls.size()>=2)
+            return false;
+        else return true;
     }
 }

@@ -31,4 +31,28 @@ public class FrameTest {
         int score = frame.getScore();
         Assert.assertEquals(8, score);
     }
+
+    @Test
+    public void roll_twotimes_should_return_10() {
+        //given
+        List<Integer> rolls = new ArrayList<>();
+        GameFrame frame = new GameFrame(rolls);
+        frame.roll(10);
+        frame.roll(10);
+        //when
+        int score = frame.getScore();
+        Assert.assertEquals(10, score);
+    }
+    @Test
+    public void roll_threetimes_should_return_8() {
+        //given
+        List<Integer> rolls = new ArrayList<>();
+        GameFrame frame = new GameFrame(rolls);
+        frame.roll(2);
+        frame.roll(6);
+        frame.roll(1);
+        //when
+        int score = frame.getScore();
+        Assert.assertEquals(8, score);
+    }
 }
