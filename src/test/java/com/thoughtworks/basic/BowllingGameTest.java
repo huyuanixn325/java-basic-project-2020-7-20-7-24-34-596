@@ -6,6 +6,8 @@ import org.junit.Test;
 import java.awt.*;
 import java.util.ArrayList;
 
+import static org.junit.Assert.assertEquals;
+
 public class BowllingGameTest {
     @Test
     public void normal_roll_should_return_sum_of_tow_rolls() {
@@ -16,7 +18,7 @@ public class BowllingGameTest {
         //when
         int score = bowllingGame.getScore();
         //then
-        Assert.assertEquals(4+5,score);
+        assertEquals(4+5,score);
     }
 
 
@@ -30,7 +32,7 @@ public class BowllingGameTest {
         //when
         int score = bowllingGame.getScore();
         //then
-        Assert.assertEquals(4+5+3,score);
+        assertEquals(4+5+3,score);
     }
 
     @Test
@@ -45,7 +47,7 @@ public class BowllingGameTest {
         //when
         int score = bowllingGame.getScore();
         //then
-        Assert.assertEquals(4+5+10+3,score);
+        assertEquals(4+5+10+3,score);
     }
 
 
@@ -77,8 +79,35 @@ public class BowllingGameTest {
         bowlingGame.roll(5);
 
         //then
-        Assert.assertEquals(50, bowlingGame.getScore());
+        assertEquals(50, bowlingGame.getScore());
+    }
+
+    @Test
+    public void should_return_true_when_given_roll_20_times() {
+        //given
+        BowllingGame bowllingGame = new BowllingGame(10);
+
+        //when
+        for (int i = 0; i < 20; i++) {
+            bowllingGame.roll(0);
+        }
+
+        //then
+        Assert.assertTrue(bowllingGame.isEnd());
     }
 
 
+    @Test
+    public void should_return_10_when_given_roll_5_roll_5() {
+        //given
+        BowllingGame bowllingGame = new BowllingGame(10);
+
+        //when
+        bowllingGame.roll(5);
+        bowllingGame.roll(5);
+
+        //then
+        assertEquals(10, bowllingGame.getScore());
+        assertEquals("10", bowllingGame.showFrameScores());
+    }
 }

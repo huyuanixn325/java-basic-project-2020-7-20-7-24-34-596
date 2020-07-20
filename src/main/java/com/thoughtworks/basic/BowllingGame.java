@@ -7,7 +7,10 @@ import java.util.List;
 public class BowllingGame {
     private int currentFrame;
     private List<GameFrame> gameFrames;
+    private int frameSize;
+    private List<Integer> frameScores;
     public BowllingGame(int gameNumber) {
+        this.frameSize = gameNumber;
         this.initFrame(gameNumber);
     }
     public void initFrame(int gameNumber){
@@ -36,9 +39,26 @@ public class BowllingGame {
     }
 
     public boolean isEnd() {
-        if (currentFrame>=10) {
+        if (currentFrame>=frameSize) {
+            return true;
+        }
+        if (currentFrame==(frameSize-1)&&this.gameFrames.get(currentFrame).isEnd()&& (!(this.gameFrames.get(currentFrame - 1).getScore() == 10))){
             return true;
         }
         return false;
     }
+
+    public String showFrameScores(){
+        String result = "";
+        for (int i = 0; i <= currentFrame; i++) {
+            if (i == 0) {
+                result += gameFrames.get(i).getScore();
+            } else {
+                result += "|" + gameFrames.get(i).getScore();
+            }
+        }
+        return result;
+    }
+
+
 }
