@@ -19,7 +19,12 @@ public class BowllingGame {
     }
 
     public void roll(int hits) {
-        gameFrames.get(hits).roll(hits);
+            if (!isEnd()&&gameFrames.get(currentFrame).isEnd()){
+                currentFrame++;
+            }
+            if (!isEnd()) {
+                gameFrames.get(currentFrame).roll(hits);
+            }
     }
 
     public int getScore() {
@@ -28,5 +33,12 @@ public class BowllingGame {
             score = score+gameFrame.getScore();
         }
         return score;
+    }
+
+    public boolean isEnd() {
+        if (currentFrame>=10) {
+            return true;
+        }
+        return false;
     }
 }
