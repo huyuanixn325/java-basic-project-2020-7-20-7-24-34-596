@@ -1,12 +1,13 @@
 package com.thoughtworks.basic;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class GameFrame {
     private List<Integer> rolls;
 
-    public GameFrame(List<Integer> rolls) {
-        this.rolls = rolls;
+    public GameFrame() {
+        this.rolls = new ArrayList<>();
     }
 
     public void roll(int i) {

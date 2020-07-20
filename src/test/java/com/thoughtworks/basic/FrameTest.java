@@ -12,8 +12,7 @@ public class FrameTest {
     @Test
     public void roll_should_return_5() {
         //given
-        List<Integer> rolls = new ArrayList<>();
-        GameFrame frame = new GameFrame(rolls);
+        GameFrame frame = new GameFrame();
         frame.roll(5);
         //when
         int score = frame.getScore();
@@ -23,8 +22,7 @@ public class FrameTest {
     @Test
     public void roll_twotimes_should_return_8() {
         //given
-        List<Integer> rolls = new ArrayList<>();
-        GameFrame frame = new GameFrame(rolls);
+        GameFrame frame = new GameFrame();
         frame.roll(5);
         frame.roll(3);
         //when
@@ -35,8 +33,7 @@ public class FrameTest {
     @Test
     public void roll_twotimes_should_return_10() {
         //given
-        List<Integer> rolls = new ArrayList<>();
-        GameFrame frame = new GameFrame(rolls);
+        GameFrame frame = new GameFrame();
         frame.roll(10);
         frame.roll(10);
         //when
@@ -46,8 +43,7 @@ public class FrameTest {
     @Test
     public void roll_threetimes_should_return_8() {
         //given
-        List<Integer> rolls = new ArrayList<>();
-        GameFrame frame = new GameFrame(rolls);
+        GameFrame frame = new GameFrame();
         frame.roll(2);
         frame.roll(6);
         frame.roll(1);
