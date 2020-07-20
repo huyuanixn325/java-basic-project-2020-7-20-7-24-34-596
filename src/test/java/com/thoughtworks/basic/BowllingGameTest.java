@@ -127,4 +127,19 @@ public class BowllingGameTest {
         assertEquals(20, bowllingGame.getScore());
         assertEquals("15|5", bowllingGame.showFrameScores());
     }
+
+    @Test
+    public void should_return_150_when_given_21_rolls() {
+        //given
+        BowllingGame bowllingGame = new BowllingGame(10);
+
+        //when
+        for(int i =0;i<21;i++){
+            bowllingGame.roll(5);
+        }
+
+        //then
+        assertEquals(150, bowllingGame.getScore());
+        assertEquals("15|15|15|15|15|15|15|15|15|15", bowllingGame.showFrameScores());
+    }
 }

@@ -9,6 +9,8 @@ public class BowllingGame {
     private List<GameFrame> gameFrames;
     private int frameSize;
     private List<Integer> frameScores;
+    private int lastHits;
+
     public BowllingGame(int gameNumber) {
         this.frameSize = gameNumber;
         this.initFrame(gameNumber);
@@ -22,6 +24,9 @@ public class BowllingGame {
     }
 
     public void roll(int hits) {
+        if (frameSize == currentFrame + 1 && gameFrames.get(currentFrame).getScore() == 10) {
+            lastHits = hits;
+        }
             if (!isEnd()&&gameFrames.get(currentFrame).isEnd()){
                 currentFrame++;
             }
@@ -73,6 +78,9 @@ public class BowllingGame {
                 if (i < currentFrame && currentFrame < frameSize) {
                     // 获取下一格的第一次得分
                     frameScore += this.gameFrames.get(i + 1).getScorebyTime(0);
+                }
+                if (i == currentFrame && i == frameSize - 1) {
+                    frameScore += lastHits;
                 }
             }
             frameScores.add(frameScore);
