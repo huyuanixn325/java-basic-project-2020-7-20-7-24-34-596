@@ -47,12 +47,12 @@ public class BowllingGameTest {
         //when
         int score = bowllingGame.getScore();
         //then
-        assertEquals(4+5+10+3,score);
+        assertEquals(4+5+10+3+3,score);
     }
 
 
     @Test
-    public void should_return_50_when_given_roll_20_times() {
+    public void should_return_50_when_given_of_20_rolls() {
         //given
         BowllingGame bowlingGame = new BowllingGame(10);
 
@@ -83,7 +83,7 @@ public class BowllingGameTest {
     }
 
     @Test
-    public void should_return_true_when_given_roll_20_times() {
+    public void should_return_true_when_given_of_three_rolls() {
         //given
         BowllingGame bowllingGame = new BowllingGame(10);
 
@@ -98,7 +98,7 @@ public class BowllingGameTest {
 
 
     @Test
-    public void should_return_10_when_given_roll_5_roll_5() {
+    public void should_return_10_when_given_of_2_rolls() {
         //given
         BowllingGame bowllingGame = new BowllingGame(10);
 
@@ -109,5 +109,22 @@ public class BowllingGameTest {
         //then
         assertEquals(10, bowllingGame.getScore());
         assertEquals("10", bowllingGame.showFrameScores());
+    }
+
+
+    @Test
+    public void should_return_20_when_given_of_three_rolls() {
+        //given
+        BowllingGame bowllingGame = new BowllingGame(10);
+
+        //when
+        bowllingGame.roll(5);
+        bowllingGame.roll(5);
+        bowllingGame.roll(5);
+
+
+        //then
+        assertEquals(20, bowllingGame.getScore());
+        assertEquals("15|5", bowllingGame.showFrameScores());
     }
 }

@@ -31,4 +31,8 @@ public class GameFrame {
             return false;
         else return true;
     }
+
+    public int getScorebyTime(int time) {
+        return rolls.get(time);
+    }
 }

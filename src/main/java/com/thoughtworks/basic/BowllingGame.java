@@ -31,9 +31,10 @@ public class BowllingGame {
     }
 
     public int getScore() {
+        calcauteFrameScores();
         int score = 0;
-        for (GameFrame gameFrame : gameFrames){
-            score = score+gameFrame.getScore();
+        for (Integer frameScore : frameScores) {
+            score += frameScore;
         }
         return score;
     }
@@ -49,16 +50,32 @@ public class BowllingGame {
     }
 
     public String showFrameScores(){
+        calcauteFrameScores();
         String result = "";
         for (int i = 0; i <= currentFrame; i++) {
             if (i == 0) {
-                result += gameFrames.get(i).getScore();
+                result += frameScores.get(i);
             } else {
-                result += "|" + gameFrames.get(i).getScore();
+                result += "|" + frameScores.get(i);
             }
         }
         return result;
     }
 
-
+    private void calcauteFrameScores() {
+        frameScores = new ArrayList<>();
+        if (currentFrame == frameSize) {
+            currentFrame--;
+        }
+        for (int i = 0; i <= currentFrame; i++) {
+            int frameScore = gameFrames.get(i).getScore();
+            if (frameScore == 10) {
+                if (i < currentFrame && currentFrame < frameSize) {
+                    // 获取下一格的第一次得分
+                    frameScore += this.gameFrames.get(i + 1).getScorebyTime(0);
+                }
+            }
+            frameScores.add(frameScore);
+        }
+    }
 }
